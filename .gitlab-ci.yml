@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker/compose:1.19.0
 
 variables:
   DOCKER_DRIVER: overlay2
