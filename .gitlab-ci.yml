@@ -10,13 +10,13 @@ before_script:
   - docker info
   - apk add --update py-pip && pip install docker-compose
 
-site_test:
+pages_test:
   script:
     - (cd site; docker-compose run web bundle exec middleman build)
   except:
     - master
 
-site:
+pages:
   script:
     - (cd site; docker-compose run web bundle exec middleman build)
     - cp -r site/public public
