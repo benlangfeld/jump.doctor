@@ -1,0 +1,27 @@
+image: docker:18.02.0-ce-git
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - apk add --update py-pip && pip install docker-compose
+
+site_test:
+  script:
+    - (cd site; docker-compose run web bundle exec middleman build)
+  except:
+    - master
+
+site:
+  script:
+    - (cd site; docker-compose run web bundle exec middleman build)
+    - cp site/public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
