@@ -1,0 +1,18 @@
+before_script:
+  - docker info
+
+site_test:
+  script:
+    - docker build -t site site
+  except:
+    - master
+
+site:
+  script:
+    - docker build -t site site
+    - cp site/public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

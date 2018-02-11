@@ -1,0 +1,14 @@
+version: '3'
+volumes:
+  bundle:
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec middleman server
+    ports:
+      - 4567:4567
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
