@@ -11,13 +11,13 @@ before_script:
 
 site_test:
   script:
-    - docker build -t site site
+    - (cd site; docker-compose run web bundle exec middleman build)
   except:
     - master
 
 site:
   script:
-    - docker build -t site site
+    - (cd site; docker-compose run web bundle exec middleman build)
     - cp site/public public
   artifacts:
     paths:
