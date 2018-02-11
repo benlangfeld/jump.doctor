@@ -31,10 +31,6 @@ h1 {
     .doc a:hover {
       color: #666; }
 
-.welcome {
-  -webkit-animation-name: welcome;
-  -webkit-animation-duration: .9s; }
-
 @-webkit-keyframes welcome {
   from {
     -webkit-transform: scale(0);
